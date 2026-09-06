@@ -29,6 +29,25 @@ tmp/
 logs/
 *.log
 
+# RepNet persistent local state / historical conversation memory
+# Keep this state on Marek's workstation unless explicitly archived separately.
+memory/
+memories/
+state/
+local_state/
+persistent_state/
+repnet_memory/
+repnet_state/
+*.sqlite
+*.sqlite3
+*.db
+*.duckdb
+*.pkl
+*.pickle
+*.shelve
+*.journal
+*.wal
+
 # Results: keep summaries, ignore bulky raw payloads
 results/**/raw/
 results/**/*.bin
