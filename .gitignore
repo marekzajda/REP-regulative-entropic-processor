@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+env/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Secrets and local configuration
+.env
+.env.*
+connector/config.json
+*.pem
+*.key
+*.pfx
+*.p12
+
+# Local / generated data
+cache/
+tmp/
+logs/
+*.log
+
+# Results: keep summaries, ignore bulky raw payloads
+results/**/raw/
+results/**/*.bin
+results/**/*.pt
+results/**/*.pth
+results/**/*.npy
+results/**/*.npz
+
+# Historical source import may contain local environments/builds
+archive/**/__pycache__/
+archive/**/.venv/
+archive/**/venv/
+archive/**/node_modules/
+archive/**/dist/
+archive/**/build/
