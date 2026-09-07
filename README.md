@@ -51,6 +51,8 @@ python -m pip install -e ".[dev]"
 pytest
 ```
 
+See [Getting Started](docs/GETTING_STARTED.md) for the full quick-start path.
+
 ## Minimal example
 
 ```python
@@ -78,9 +80,10 @@ src/repnet_community/
   graph.py                    deterministic weighted graph primitives
 examples/
   basic_dissipation.py
- tests/
+tests/
   test_core.py
- docs/
+docs/
+  GETTING_STARTED.md          installation and first run
   CONCEPT.md                  conceptual and mathematical overview
   ARCHITECTURE.md             implementation architecture
   SCIENTIFIC_BACKGROUND.md    scientific scope and claim boundary
@@ -120,6 +123,7 @@ A mechanism is promoted to the public edition only when it has a clear algorithm
 
 ## Documentation
 
+- [Getting Started](docs/GETTING_STARTED.md)
 - [Concept](docs/CONCEPT.md)
 - [Architecture](docs/ARCHITECTURE.md)
 - [Scientific Background](docs/SCIENTIFIC_BACKGROUND.md)
