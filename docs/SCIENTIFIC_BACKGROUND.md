@@ -30,6 +30,18 @@ This minimal system provides a controlled baseline for asking experimentally pre
 - higher-order closure constraints;
 - interfaces between regulatory state and learned components.
 
+## Interpretability and traceability
+
+A central design motivation of REPNet is **mechanistic traceability of the regulatory process**.
+
+The public implementation exposes the graph, node potentials, edge fluxes, closure energy, total flow, and forcing inputs directly. A run can therefore be replayed and audited step by step, and causal interventions on nodes, edges, conductances, or forcing terms can be measured explicitly.
+
+This differs from the default interpretability posture of a large language model. LLM internals are not inaccessible: activations, attention patterns, residual streams, probes, attribution methods, sparse autoencoders and causal interventions can reveal meaningful structure. However, those internal representations are highly distributed and do not automatically constitute a compact or faithful explanation of why a particular answer was produced.
+
+REPNet's claim is therefore narrower and testable: **the regulatory computation is natively observable and traceable by construction**. It is not a claim that every regulatory variable carries a direct human-level semantic interpretation.
+
+See [REPNet and standard LLM architectures](REPNET_VS_LLM.md) for the full comparison.
+
 ## Relation to the wider research program
 
 The broader REP / REPNet research line explores richer mechanisms than those exposed in Community Edition v1.0. Some historical branches also coupled regulatory dynamics to semantic embeddings, memory retrieval, learned readouts, and language-model interfaces.
