@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: REPNet Community Edition documentation
+    url: https://github.com/marekzajda/REP-regulative-entropic-processor/tree/main/docs
+    about: Check the concept, architecture, scientific background, FAQ, and public research boundary before opening an issue.
