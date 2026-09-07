@@ -6,7 +6,7 @@ The public v1.0 architecture is intentionally small and inspectable.
 flowchart TD
     A[Optional external forcing] --> B[Node potentials C_i]
     B --> C[Weighted edge differences]
-    C --> D[Fluxes J_ij = g_ij C_j - C_i]
+    C --> D[Fluxes J_ij = g_ij(C_j - C_i)]
     D --> E[Degree-normalized regulatory update]
     E --> B
     B --> F[Closure / Dirichlet energy V(C)]
