@@ -1,8 +1,12 @@
 # REPNet Community Edition v1.0
 
-**REPNet — Regulative Entropic Processor Network** is an open-source experimental architecture for studying distributed regulation, graph-based state dynamics, information flow, perturbation, and closure.
+[![REPNet Community CI](https://github.com/marekzajda/REP-regulative-entropic-processor/actions/workflows/community-ci.yml/badge.svg)](https://github.com/marekzajda/REP-regulative-entropic-processor/actions/workflows/community-ci.yml)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-This repository is the **public Community Edition** of the REPNet research program. It contains a cleaned, installable, reproducible reference implementation that anyone can inspect, run, modify, and extend.
+**REPNet — Regulative Entropic Processor Network** is an open-source experimental architecture for studying distributed regulation, graph-based state dynamics, information flow, perturbation, relaxation, and closure.
+
+This repository is the **public Community Edition** of the REPNet research program. It contains a cleaned, installable, reproducible reference implementation that anyone can inspect, run, modify, test, and extend.
 
 > Community Edition is intentionally separated from the private research laboratory. Historical memory, private datasets, raw forensic outputs, machine-specific state, unreleased model checkpoints, and experimental orchestration remain outside this public repository.
 
@@ -20,9 +24,17 @@ and the public reference observable is the closure / Dirichlet energy
 V(C) = 1/2 Σ_(i,j) g_ij (C_j - C_i)^2.
 ```
 
-Community Edition v1.0 uses a degree-normalized **dissipative** update: without external forcing, potential differences relax rather than amplify. This makes the system a compact testbed for regulatory dynamics and future extensions such as adaptive conductances, nonlinear fluxes, semantic interfaces, memory, learned readouts, and higher-order closure constraints.
+Community Edition v1.0 uses a degree-normalized **dissipative** update: without external forcing, potential differences relax rather than amplify. This gives the project a compact, testable baseline for regulatory dynamics and future extensions.
 
-See [docs/CONCEPT.md](docs/CONCEPT.md) for the conceptual and mathematical overview.
+```mermaid
+flowchart TD
+    A[Optional external forcing] --> B[Node potentials C_i]
+    B --> C[Edge fluxes J_ij]
+    C --> D[Degree-normalized regulatory update]
+    D --> B
+    B --> E[Closure / Dirichlet energy V(C)]
+    C --> F[Total flow diagnostics]
+```
 
 ## Install
 
@@ -62,16 +74,18 @@ python examples/basic_dissipation.py
 
 ```text
 src/repnet_community/
-  core.py              reference regulatory dynamics
-  graph.py             deterministic weighted graph primitives
+  core.py                     reference regulatory dynamics
+  graph.py                    deterministic weighted graph primitives
 examples/
   basic_dissipation.py
  tests/
   test_core.py
  docs/
-  CONCEPT.md
-  ARCHITECTURE.md
+  CONCEPT.md                  conceptual and mathematical overview
+  ARCHITECTURE.md             implementation architecture
+  SCIENTIFIC_BACKGROUND.md    scientific scope and claim boundary
   COMMUNITY_RESEARCH_BOUNDARY.md
+  FAQ.md
 ```
 
 ## What v1.0 includes
@@ -82,14 +96,17 @@ examples/
 - closure-energy and total-flow observables;
 - explicit external forcing hook;
 - regression tests for dissipative relaxation;
-- public CI;
-- MIT license and citation metadata.
+- public CI on supported Python versions;
+- MIT license and citation metadata;
+- contribution, security, roadmap, issue and pull-request guidance.
 
 ## What v1.0 does not claim
 
-REPNet Community Edition is a research scaffold, not a claim that the minimal graph model is a complete theory of intelligence, consciousness, thermodynamics, or physics. The term *entropic* refers to the broader research program around regulation, dispersion, information flow, and closure. The scalar `V(C)` used here is specifically a Dirichlet / closure energy.
+REPNet Community Edition is a research scaffold, not a claim that the minimal graph model is a complete theory of intelligence, consciousness, thermodynamics, or physics. The term *entropic* refers to the broader research program around regulation, dispersion, information flow, and closure. The scalar `V(C)` implemented here is specifically a Dirichlet / closure energy.
 
 The public v1.0 implementation is also not a byte-for-byte dump of historical experimental branches. It is a cleaned reference surface built from mechanisms that can be stated and tested openly.
+
+See [Scientific Background](docs/SCIENTIFIC_BACKGROUND.md) for the explicit research and claim boundary.
 
 ## Community and research track
 
@@ -99,11 +116,32 @@ The project follows a promotion model:
 private research → validation → clean specification → Community Edition
 ```
 
-A mechanism is promoted to the public edition only when it has a clear algorithmic specification, controlled tests, no private state, and a reproducible implementation. See [docs/COMMUNITY_RESEARCH_BOUNDARY.md](docs/COMMUNITY_RESEARCH_BOUNDARY.md).
+A mechanism is promoted to the public edition only when it has a clear algorithmic specification, controlled tests, no private state, and a reproducible implementation. See [Community / Research Boundary](docs/COMMUNITY_RESEARCH_BOUNDARY.md).
+
+## Documentation
+
+- [Concept](docs/CONCEPT.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [Scientific Background](docs/SCIENTIFIC_BACKGROUND.md)
+- [FAQ](docs/FAQ.md)
+- [Community / Research Boundary](docs/COMMUNITY_RESEARCH_BOUNDARY.md)
+- [Roadmap](ROADMAP.md)
 
 ## Contributing
 
-Contributions are welcome: alternative graph constructors, nonlinear regulatory laws, diagnostics, benchmarks, visualization, documentation, and mathematically explicit extensions are natural starting points. Please keep proposed mechanisms independently testable and avoid hidden external state.
+Contributions are welcome: graph constructors, nonlinear regulatory laws, diagnostics, benchmarks, visualization, documentation, mathematically explicit extensions, and negative-result replications are all useful.
+
+Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request. Please keep proposed mechanisms independently testable and avoid hidden external state.
+
+## Community standards and security
+
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [Security Policy](SECURITY.md)
+- GitHub issue templates are provided for bugs and research/feature proposals.
+
+## Roadmap
+
+Community Edition development is intentionally conservative: private research mechanisms are promoted only after validation. See [ROADMAP.md](ROADMAP.md) for the public v1.x direction.
 
 ## License
 
