@@ -4,9 +4,15 @@ __pycache__/
 *.pyd
 .pytest_cache/
 .mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
 .venv/
 venv/
 env/
+dist/
+build/
+*.egg-info/
 
 # IDE / OS
 .vscode/
@@ -29,8 +35,8 @@ tmp/
 logs/
 *.log
 
-# RepNet persistent local state / historical conversation memory
-# Keep this state on Marek's workstation unless explicitly archived separately.
+# REPNet persistent local state / historical conversation memory
+# Community Edition must not publish private persistent state.
 memory/
 memories/
 state/
