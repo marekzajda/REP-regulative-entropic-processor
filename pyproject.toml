@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "repnet-community"
+version = "1.0.0"
+description = "Open reference implementation of the Regulative Entropic Processor Network (REPNet)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+  { name = "Marek Zajda" }
+]
+dependencies = [
+  "numpy>=1.24"
+]
+keywords = ["repnet", "regulative computing", "graph dynamics", "closure", "entropic processing"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering"
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.urls]
+Homepage = "https://github.com/marekzajda/REP-regulative-entropic-processor"
+Repository = "https://github.com/marekzajda/REP-regulative-entropic-processor"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
