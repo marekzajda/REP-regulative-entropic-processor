@@ -36,6 +36,18 @@ flowchart TD
     C --> F[Total flow diagnostics]
 ```
 
+## Why REPNet is different from a standard LLM
+
+REPNet is not primarily a next-token predictor. Its public core is an **explicit regulatory dynamical system** whose internal state evolution can be inspected directly.
+
+A major design advantage is **native mechanistic traceability**: during a run, a researcher can follow node potentials, edge fluxes, closure energy, total flow, graph topology, conductances, and the effect of perturbations step by step. This makes causal intervention and replay of the regulatory process straightforward.
+
+By contrast, modern LLMs have very strong semantic and generative capabilities, but their internal computation is distributed across high-dimensional activations. Those internals can be studied with attention analysis, probes, attribution, sparse autoencoders and other mechanistic-interpretability tools, but they do not naturally provide a compact, faithful decision trace.
+
+This distinction is important: REPNet aims to make the **regulatory computation traceable by construction**. It does **not** claim that every internal state automatically corresponds to a human-readable semantic reason.
+
+See [REPNet and standard LLM architectures](docs/REPNET_VS_LLM.md) for a detailed comparison of advantages, limitations, and the hybrid research direction.
+
 ## Install
 
 ```bash
@@ -86,6 +98,7 @@ docs/
   GETTING_STARTED.md          installation and first run
   CONCEPT.md                  conceptual and mathematical overview
   ARCHITECTURE.md             implementation architecture
+  REPNET_VS_LLM.md            comparison with standard LLM architectures
   SCIENTIFIC_BACKGROUND.md    scientific scope and claim boundary
   COMMUNITY_RESEARCH_BOUNDARY.md
   FAQ.md
@@ -126,6 +139,7 @@ A mechanism is promoted to the public edition only when it has a clear algorithm
 - [Getting Started](docs/GETTING_STARTED.md)
 - [Concept](docs/CONCEPT.md)
 - [Architecture](docs/ARCHITECTURE.md)
+- [REPNet vs standard LLM architectures](docs/REPNET_VS_LLM.md)
 - [Scientific Background](docs/SCIENTIFIC_BACKGROUND.md)
 - [FAQ](docs/FAQ.md)
 - [Community / Research Boundary](docs/COMMUNITY_RESEARCH_BOUNDARY.md)
