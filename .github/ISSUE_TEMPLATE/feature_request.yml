@@ -1,0 +1,38 @@
+name: Feature or research proposal
+description: Propose a public, testable REPNet Community Edition extension
+title: "[Proposal]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or research question
+      description: What problem or experimentally testable question should this address?
+    validations:
+      required: true
+  - type: textarea
+    id: mechanism
+    attributes:
+      label: Proposed mechanism
+      description: Describe the algorithm or mathematical change as explicitly as possible.
+    validations:
+      required: true
+  - type: textarea
+    id: test
+    attributes:
+      label: Proposed validation
+      description: How could the mechanism be falsified or compared to a baseline?
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies and state
+      description: Does this require new packages, external services, persistent state, models, or datasets?
+  - type: checkboxes
+    id: boundary
+    attributes:
+      label: Community boundary
+      options:
+        - label: The proposal can be implemented and evaluated without private research state.
+          required: true
