@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#07111f" />
+  <meta name="description" content="REPNet 4.0 — Regulative Entropic Processor Network. A research architecture for semantic memory, regulatory graph dynamics, mechanistic traces, and transparent AI decision support." />
+  <title>REPNet 4.0 — Regulative Entropic Processor Network</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg2: #0b1728;
+      --panel: rgba(15, 29, 49, .78);
+      --line: rgba(147, 197, 253, .17);
+      --text: #eef6ff;
+      --muted: #a6bad0;
+      --cyan: #61dafb;
+      --blue: #7aa7ff;
+      --green: #74e0b3;
+      --violet: #b99cff;
+      --danger: #ff8e8e;
+      --shadow: 0 24px 70px rgba(0,0,0,.32);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 14% 10%, rgba(97,218,251,.11), transparent 26%),
+        radial-gradient(circle at 86% 2%, rgba(185,156,255,.11), transparent 24%),
+        linear-gradient(180deg, var(--bg), #050b13 72%);
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1180px, calc(100% - 34px)); margin: 0 auto; }
+    nav {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(7,17,31,.72);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 800; letter-spacing: .02em; }
+    .mark {
+      width: 34px; height: 34px; border-radius: 11px;
+      display: grid; place-items: center;
+      border: 1px solid rgba(97,218,251,.42);
+      background: linear-gradient(145deg, rgba(97,218,251,.16), rgba(185,156,255,.12));
+      box-shadow: inset 0 0 22px rgba(97,218,251,.08);
+    }
+    .nav-links { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 14px; }
+    .nav-links a { padding: 9px 11px; border-radius: 10px; }
+    .nav-links a:hover { background: rgba(255,255,255,.05); color: var(--text); }
+    .hero { padding: 92px 0 60px; }
+    .eyebrow {
+      display: inline-flex; gap: 8px; align-items: center;
+      padding: 7px 11px; border-radius: 999px;
+      border: 1px solid rgba(116,224,179,.3);
+      background: rgba(116,224,179,.08);
+      color: #baf4d9; font-size: 13px; font-weight: 700;
+    }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 14px rgba(116,224,179,.75); }
+    h1 {
+      margin: 22px 0 16px;
+      max-width: 900px;
+      font-size: clamp(44px, 7vw, 84px);
+      line-height: .96;
+      letter-spacing: -.045em;
+    }
+    .gradient { background: linear-gradient(90deg, var(--cyan), var(--blue) 48%, var(--violet)); -webkit-background-clip: text; color: transparent; }
+    .lead { max-width: 790px; font-size: clamp(18px, 2vw, 22px); line-height: 1.6; color: var(--muted); }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      min-height: 48px; padding: 0 18px; border-radius: 13px;
+      border: 1px solid var(--line); font-weight: 800; font-size: 14px;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .btn:hover { transform: translateY(-2px); border-color: rgba(97,218,251,.5); }
+    .btn.primary { color: #03101a; background: linear-gradient(90deg, var(--cyan), #98eaff); border-color: transparent; }
+    .btn.secondary { background: rgba(255,255,255,.035); }
+    .note { margin-top: 14px; color: #849bb3; font-size: 13px; }
+    .architecture {
+      margin-top: 42px; padding: 22px;
+      border: 1px solid var(--line); border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(16,34,57,.78), rgba(9,20,35,.72));
+      box-shadow: var(--shadow); overflow: hidden;
+    }
+    .arch-label { color: #8ea7bf; text-transform: uppercase; letter-spacing: .14em; font-size: 11px; font-weight: 800; margin-bottom: 17px; }
+    .flow { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 10px; align-items: stretch; }
+    .node {
+      min-height: 88px; padding: 14px 12px;
+      display: flex; flex-direction: column; justify-content: center;
+      border: 1px solid var(--line); border-radius: 15px;
+      background: rgba(255,255,255,.028); text-align: center;
+      font-size: 13px; font-weight: 750;
+    }
+    .node small { display: block; margin-top: 5px; color: var(--muted); font-weight: 500; line-height: 1.35; }
+    .arrow { display: grid; place-items: center; color: #6585a7; font-size: 22px; }
+    section { padding: 52px 0; }
+    h2 { margin: 0 0 12px; font-size: clamp(30px, 4vw, 46px); letter-spacing: -.035em; }
+    .section-lead { max-width: 780px; color: var(--muted); line-height: 1.65; }
+    .grid { margin-top: 28px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card {
+      padding: 22px; border-radius: 18px; border: 1px solid var(--line);
+      background: var(--panel); box-shadow: 0 12px 34px rgba(0,0,0,.14);
+    }
+    .card .kicker { color: var(--cyan); font-size: 12px; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+    .card h3 { margin: 10px 0 8px; font-size: 19px; }
+    .card p { margin: 0; color: var(--muted); line-height: 1.55; font-size: 14px; }
+    .status-panel {
+      display: grid; grid-template-columns: 1.2fr .8fr; gap: 18px;
+      padding: 25px; border: 1px solid rgba(116,224,179,.24); border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(116,224,179,.075), rgba(122,167,255,.05));
+    }
+    .status-list { display: grid; gap: 10px; }
+    .status-row { display: flex; justify-content: space-between; gap: 18px; padding: 11px 0; border-bottom: 1px solid var(--line); color: var(--muted); }
+    .status-row:last-child { border-bottom: 0; }
+    .status-row strong { color: var(--text); text-align: right; }
+    .warning { color: #ffcc9d; }
+    footer { padding: 40px 0 54px; border-top: 1px solid var(--line); color: #8198b0; font-size: 13px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    @media (max-width: 900px) {
+      .nav-links a:not(.keep) { display: none; }
+      .flow { grid-template-columns: 1fr; }
+      .arrow { transform: rotate(90deg); min-height: 24px; }
+      .grid, .status-panel { grid-template-columns: 1fr; }
+      .hero { padding-top: 70px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top"><span class="mark">Ω</span><span>REPNet 4.0</span></a>
+      <div class="nav-links">
+        <a href="#architecture">Architecture</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#runtime">Runtime</a>
+        <a class="keep" href="https://github.com/marekzajda/REP-regulative-entropic-processor" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <div class="wrap hero">
+      <span class="eyebrow"><span class="dot"></span> REPNet 4.0 alpha — active development</span>
+      <h1>Regulative <span class="gradient">Entropic Processor</span> Network</h1>
+      <p class="lead">
+        An experimental AI architecture that separates semantic memory from mechanistic regulatory dynamics. REPNet 4.0 combines retrieval, a corrected dissipative graph process, interpretable regulatory traces, and a language layer without pretending that the graph itself is an LLM latent space.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="http://127.0.0.1:8040/">◉ Open local REPNet Chat</a>
+        <a class="btn secondary" href="https://github.com/marekzajda/REP-regulative-entropic-processor" target="_blank" rel="noopener">View public repository ↗</a>
+      </div>
+      <div class="note">The chat button opens the local REPNet 4.0 runtime on this computer. The Python/CUDA backend is intentionally not hosted by GitHub Pages.</div>
+
+      <div class="architecture" id="architecture">
+        <div class="arch-label">REPNet 4.0 processing path</div>
+        <div class="flow">
+          <div class="node">User input<small>text / context</small></div>
+          <div class="arrow">→</div>
+          <div class="node">Dual processing<small>semantic retrieval + REP forcing</small></div>
+          <div class="arrow">→</div>
+          <div class="node">Regulatory Trace<small>16D mechanistic signature</small></div>
+          <div class="arrow">→</div>
+          <div class="node">Language layer<small>Ollama / compatible LLM</small></div>
+        </div>
+      </div>
+    </div>
+
+    <section id="capabilities">
+      <div class="wrap">
+        <h2>Two channels, two different jobs.</h2>
+        <p class="section-lead">REPNet 4.0 deliberately avoids forcing the regulatory graph to imitate a semantic embedding. Semantic relevance and regulatory dynamics remain separate and auditable.</p>
+        <div class="grid">
+          <article class="card">
+            <div class="kicker">Semantic channel</div>
+            <h3>Retrieval memory</h3>
+            <p>MiniLM-based episodic retrieval provides a specific semantic memory channel. V4 learning is stored in a new isolated memory store rather than the historical V3 state.</p>
+          </article>
+          <article class="card">
+            <div class="kicker">Regulatory channel</div>
+            <h3>Corrected graph dynamics</h3>
+            <p>The V4 runtime uses the dissipative sign correction identified during forensic testing and measures relaxation rather than relying on the historical runaway confidence path.</p>
+          </article>
+          <article class="card">
+            <div class="kicker">Mechanistic readout</div>
+            <h3>16D Regulatory Trace</h3>
+            <p>Stability, relaxation, multiscale behavior, energy and flow evolution are compressed into an interpretable scale-invariant trace instead of a 384D semantic decoder.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="runtime">
+      <div class="wrap status-panel">
+        <div>
+          <h2>REPNet 4.0 local runtime</h2>
+          <p class="section-lead">The public site documents and launches the system. Computation remains local so the graph state, learning memory, GPU execution and development data stay under direct control.</p>
+          <div class="actions">
+            <a class="btn primary" href="http://127.0.0.1:8040/">Open REPNet 4.0 Chat</a>
+          </div>
+        </div>
+        <div class="status-list">
+          <div class="status-row"><span>Runtime</span><strong>FastAPI + CUDA</strong></div>
+          <div class="status-row"><span>Graph bootstrap</span><strong>2000 nodes / 11,686 edges</strong></div>
+          <div class="status-row"><span>Regulatory representation</span><strong>16D trace</strong></div>
+          <div class="status-row"><span>V4 semantic learning</span><strong>Enabled</strong></div>
+          <div class="status-row"><span>Graph plasticity</span><strong class="warning">OFF in alpha</strong></div>
+          <div class="status-row"><span>Historical V3 state</span><strong>Read-only</strong></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>REPNet — Regulative Entropic Processor Network</span>
+      <span>Research program by Marek Zajda · 2026</span>
+    </div>
+  </footer>
+</body>
+</html>
